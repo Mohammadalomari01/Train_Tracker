@@ -1,0 +1,107 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+<div class="wrapper">
+  <!-- Sidebar -->
+  <app-sidebar></app-sidebar>
+  <!-- End Sidebar -->
+
+  <div class="main-panel">
+    <div class="main-header">
+      <div class="main-header-logo">
+        <!-- Logo Header -->
+        <div class="logo-header" data-background-color="dark">
+          <a href="index.html" class="logo">
+            <img src="../assets/Admin/img/kaiadmin/logo_light.svg" alt="navbar brand" class="navbar-brand"
+              height="20" />
+          </a>
+          <div class="nav-toggle">
+            <button class="btn btn-toggle toggle-sidebar">
+              <i class="gg-menu-right"></i>
+            </button>
+            <button class="btn btn-toggle sidenav-toggler">
+              <i class="gg-menu-left"></i>
+            </button>
+          </div>
+        </div>
+        <!-- End Logo Header -->
+      </div>
+      <!-- Navbar Header -->
+      <app-navbar></app-navbar>
+      <!-- End Navbar -->
+    </div>
+
+    <div class="container">
+      <div class="page-inner">
+        <!-- <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4">
+          <div>
+            <h3 class="fw-bold fs-5 mb-3">Train Tracker</h3>
+            <h6 class="op-7 mb-2 fs-6">Welcome to the admin page of Train Tracker!</h6>
+          </div>
+        </div> -->
+
+        <!-- Instructions Section -->
+
+        <div class="row">
+          <div class="col-12">
+            <div class="alert alert-info">
+              <h5 class="fw-bold">Instructions:</h5>
+              <ul>
+                <li><strong>To add a station:</strong> Click on the location where you want to add the station.</li>
+                <li><strong>To change a station location:</strong> Drag the marker to the new location where you want
+                  the
+                  station.
+                </li>
+                <li><strong>To edit the station's name or image:</strong> Click on the marker for the station to edit
+                  its details.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- Manage Stations Section -->
+        <managestations></managestations>
+
+        <div class="row">
+          <div class="col-sm-12 col-md-6 mt-4">
+            <div class="card card-stats card-round">
+              <div class="card-body">
+                <div class="row align-items-center">
+                  <div class="col-auto">
+                    <!-- Icon without the blue box -->
+                    <i class="fas fa-train fa-2x text-primary"></i>
+                  </div>
+                  <div class="col ps-3">
+                    <div class="numbers">
+                      <p class="card-category mb-0">Total Stations</p>
+                      <h4 class="card-title mb-0">{{managestation.totalStations}}</h4>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-12 col-md-6 mt-4">
+            <div class="card card-stats card-round">
+              <div class="card-body">
+                <div class="row align-items-center">
+                  <div class="col-auto">
+                    <!-- Icon without the blue box -->
+                    <i class="fas fa-user-friends fa-2x text-info"></i>
+                  </div>
+                  <div class="col ps-3">
+                    <div class="numbers">
+                      <p class="card-category mb-0">Total Users</p>
+                      <h4 class="card-title mb-0">{{AuthService.totalUsers}}</h4>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>

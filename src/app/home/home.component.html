@@ -1,0 +1,153 @@
+<body>
+    <home-navbar></home-navbar>
+
+    <div class="hero-1 section-space-md-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-space-md-bottom">
+                        <div class="row justify-content-center">
+                            <div class="col-xl-10 text-center">
+                                <h1>{{homeService.homepage.websitetitle}}</h1>
+                                <p class="mb-12 max-text-14 mx-auto">{{homeService.homepage.toptext}}</p>
+                                <div class="d-flex align-items-center justify-content-center flex-wrap gap-4"><a
+                                        routerLink="/contactus" class="btn btn-dark">Contact Us </a></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div><!-- /Hero -->
+    <div class="section-space-md-y">
+        <div class="section-space-md-bottom row g-4">
+            <div class="container col-md-4">
+
+                <div class="input-group">
+                    <input type="text" [formControl]="stationName"
+                        class="form-control rounded-start-2 bg-secondary border-secondary" placeholder="Search">
+                    <span (click)="searchStation()" class="input-group-text bg-primary border-primary text-light">
+                        <i class="bi bi-search"></i></span>
+                </div>
+            </div>
+        </div>
+        <div class="section-space-md-bottom">
+            <div class="container">
+                <google-map width="100%" height="500px" [center]="center" [zoom]="zoom">
+                    <map-marker *ngFor="let station of stationService.stations | station:stationName.value"
+                        [position]="{lat:station.latitude,lng:station.longitude}" (mapClick)="onMarkerClick(station)"
+                        [label]="{ 
+                            text: station.stationname, 
+                            color: 'blue', 
+                            fontFamily: 'Arial', 
+                            fontSize: '10px', 
+                            fontWeight: 'bold' 
+                        }">
+                    </map-marker>
+                    <map-marker *ngIf="userLocation" [position]="userLocation"
+                        [label]="{ text: 'Your Location', color: 'd-block' }"
+                        [icon]="{url: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'}">
+                    </map-marker>
+                </google-map>
+            </div>
+        </div>
+    </div>
+    <!-- Popular Destination  -->
+    <div class="section-space-md-y mt-0">
+        <div class="section-space-md-bottom">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7 col-xxl-6">
+                        <div class="text-center">
+                            <h2 class="d-block mb-1 fs-20 text-primary fw-medium">Popular
+                                Tour</h2>
+                            <h2 class="mb-0">{{homeService.homepage.desttitle}}</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-12">
+                    <ul class="nav nav-pills column-gap-4 row-gap-2 justify-content-center popular-nav mb-4">
+                        <li class="nav-item"><button class="nav-link rounded-pill active" data-bs-toggle="pill"
+                                type="button" (click)="setActiveTab('All Stations')">All
+                                Stations</button></li>
+                        <li class="nav-item"><button class="nav-link rounded-pill" data-bs-toggle="pill" type="button"
+                                (click)="setActiveTab('Nearest Station')">Nearest Station</button></li>
+
+                    </ul>
+                </div>
+                <div class="col-12">
+                    <div class="tab-content">
+                        <div class="tab-pane fade show active" id="dayLongTabs">
+                            <div *ngIf="filterStation==null" class="row g-4">
+                                <div class="col-md-6 col-lg-4" *ngFor="let obj of 
+                                stationService.stations 
+                                | station:stationName.value">
+
+                                    <app-station-card [station]="obj"></app-station-card>
+                                </div>
+                            </div>
+                            <div *ngIf="filterStation!=null" class="row g-4">
+                                <div class="col-md-6 col-lg-4">
+
+                                    <app-station-card [station]="filterStation"></app-station-card>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-space-md-top section-space-bottom">
+        <div class="container">
+            <div class="row g-4 justify-content-xxl-between">
+                <div class="col-lg-6"><span class="d-block fs-14 text-primary fw-medium mb-1">GET TO KNOW US</span>
+                    <h2>{{homeService.homepage.titileabouttext}}</h2>
+                    <p class="mb-8">{{homeService.homepage.abouttext1}}</p>
+                    <div class="px-8 py-6 bg-success-subtle"><span
+                            class="d-block mb-0 h5 max-text-10">{{homeService.homepage.abouttext2}}</span></div>
+                    <div class="my-8">
+                        <ul class="list gap-4">
+                            <li class="d-flex gap-2 align-items-center">
+                                <div class="flex-shrink-0"><img
+                                        [src]="'../../../../../../assets/Images/' + homeService.homepage.trainlogo"
+                                        alt="image" class="mg-fluid w-15">
+                                </div>
+                                <div class="flex-grow-1 fs-18 fw-medium">{{homeService.homepage.pointabouttext1}}</div>
+                            </li>
+                            <li class="d-flex gap-2 align-items-center">
+                                <div class="flex-shrink-0"><img
+                                        [src]="'../../../../../../assets/Images/' + homeService.homepage.trainlogo"
+                                        alt="image" class="mg-fluid w-15">
+                                </div>
+                                <div class="flex-grow-1 fs-18 fw-medium">{{homeService.homepage.pointabouttext2}}</div>
+                            </li>
+                        </ul>
+                    </div><a routerLink="/about" class="btn btn-primary text-light">Discover More</a>
+                </div>
+                <div class="col-lg-6 col-xxl-5">
+                    <div class="position-relative z-1"><img
+                            [src]="'../../../../../../assets/Images/' + homeService.homepage.formimage" alt="image"
+                            class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Feedback -->
+    <testimonial></testimonial>
+    <!-- /Feedback -->
+
+
+    <app-footer></app-footer>
+</body>

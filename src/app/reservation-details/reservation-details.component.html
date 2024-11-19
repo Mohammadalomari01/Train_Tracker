@@ -1,0 +1,120 @@
+<div class="banner section-space-y">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="section-space-md-y text-center">
+                    <h1 class="h2 text-light">CHECKOUT</h1>
+                    <ul class="list list-row list-dot list-dot-md justify-content-center">
+                        <li><a routerLink="/" class="link text-light hover:text-primary">Home</a></li>
+                        <li><a class="link text-primary hover:text-primary">CHECKOUT</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><!-- /Banner -->
+<div class="section-space-y">
+    <div class="container">
+        <div class="row g-4 align-items-center">
+            <div class="col-md-6"><img src="../../assets/Home/img/checkout-img.png" alt="image" class="img-fluid"></div>
+            <div class="col-md-6">
+                <h2>Completed 🎉</h2>
+                <h5>An email with your reservation details has been sent to your inbox</h5>
+
+                <div class="my-12">
+                    <div class="card checkout-card">
+                        <div class="card-body">
+                            <h4 class="mb-6">Booking Details</h4>
+                            <ul class="list gap-3">
+                                <!-- Departure Day -->
+                                <li>
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <div
+                                            class="d-flex align-items-center gap-2 text-dark text-opacity-60 flex-grow-1 fs-14">
+                                            <span class="d-inline-block flex-shrink-0"><i
+                                                    class="bi bi-calendar-date"></i></span>
+                                            <span class="d-inline-block flex-grow-1 ff-1">Trip date</span>
+                                        </div>
+                                        <div class="text-dark fs-14 flex-shrink-0">{{
+                                            data.reservationData.reservationDate }}
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <!-- Guests -->
+                                <li>
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <div
+                                            class="d-flex align-items-center gap-2 text-dark text-opacity-60 flex-grow-1 fs-14">
+                                            <span class="d-inline-block flex-shrink-0"><i
+                                                    class="bi bi-people"></i></span>
+                                            <span class="d-inline-block flex-grow-1 ff-1">Guests</span>
+                                        </div>
+                                        <div class="text-dark fs-14 flex-shrink-0">{{
+                                            data.reservationData.tickets.length }}
+                                            guest(s)</div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="card-footer">
+                            <ul class="list gap-3">
+
+
+                                <!-- Booking Day -->
+                                <li>
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <div
+                                            class="d-flex align-items-center gap-2 text-dark text-opacity-60 flex-grow-1 fs-14">
+                                            <span class="d-inline-block flex-shrink-0"><i
+                                                    class="bi bi-calendar-date"></i></span>
+                                            <span class="d-inline-block flex-grow-1 ff-1">Booking date</span>
+                                        </div>
+                                        <div class="text-dark fs-14 flex-shrink-0">{{ currentDateTime| date:'short' }}
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <!-- Total Price -->
+                                <li>
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <div
+                                            class="d-flex align-items-center gap-2 text-dark text-opacity-60 flex-grow-1 fs-14">
+                                            <span class="d-inline-block flex-shrink-0"><i
+                                                    class="bi bi-receipt"></i></span>
+                                            <span class="d-inline-block flex-grow-1 ff-1">Total</span>
+                                        </div>
+                                        <div class="text-dark fs-14 flex-shrink-0">{{
+                                            (data.price)*(data.reservationData.tickets.length ) }} JOD
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <!-- Payment Method -->
+                                <li>
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <div
+                                            class="d-flex align-items-center gap-2 text-dark text-opacity-60 flex-grow-1 fs-14">
+                                            <span class="d-inline-block flex-shrink-0"><i
+                                                    class="bi bi-wallet2"></i></span>
+                                            <span class="d-inline-block flex-grow-1 ff-1">Payment method</span>
+                                        </div>
+                                        <div class="text-dark fs-14 flex-shrink-0">{{ data.reservationData.paymentMethod
+                                            ||
+                                            'Visa' }}</div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex align-items-center justify-content-center gap-4 flex-wrap"><a routerLink="/"
+                        class="btn btn-light">Back Home </a><a (click)="downloadInvoices()"
+                        class="btn btn-primary text-light">Download
+                        Invoice</a></div>
+            </div>
+        </div>
+    </div>
+</div>

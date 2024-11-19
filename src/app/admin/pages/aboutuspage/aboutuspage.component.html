@@ -1,0 +1,138 @@
+
+<div class="wrapper">
+    <!-- Sidebar -->
+    <app-sidebar></app-sidebar>
+    <!-- End Sidebar -->
+
+    <div class="main-panel">
+      <div class="main-header">
+
+        <div class="main-header-logo">
+          <!-- Logo Header -->
+          <div class="logo-header" data-background-color="dark">
+            <a href="../index.html" class="logo">
+              <img
+                src="../../assets/Admin/img/kaiadmin/logo_light.svg"
+                alt="navbar brand"
+                class="navbar-brand"
+              />
+            </a>
+            <div class="nav-toggle">
+              <button class="btn btn-toggle toggle-sidebar">
+                <i class="gg-menu-right"></i>
+              </button>
+              <button class="btn btn-toggle sidenav-toggler">
+                <i class="gg-menu-left"></i>
+              </button>
+            </div>
+           
+          </div>
+          <!-- End Logo Header -->
+        </div>
+        <!-- Navbar Header -->
+         <app-navbar></app-navbar>
+        <!-- End Navbar -->
+      </div>
+
+      <div class="container">
+        <div class="row align-items-center mt-5">
+          <!-- Left Column: Carousel -->
+          <div class="col-lg-6 col-md-12">
+            <img [src]="'../../../../../../assets/Images/' + About.Aboutuspage.about_Image" alt="image" class="img-fluid carousel-img">
+
+          </div>
+      
+          <!-- Right Column: About Us Content -->
+          <div class="col-lg-6 col-md-12">
+            <div class="content">
+              <div class="d-flex flex-column flex-sm-row justify-content-between align-items-start">
+                <span class="contact-subtitle fs-6 fw-medium">
+                  <h2>ABOUT US</h2>
+                </span>
+                <button class="btn btn-primary mt-2 mt-sm-0 me-2" (click)="openUpdateDailog(About.Aboutuspage)">Update</button>
+              </div>
+              <p>{{ About.Aboutuspage.about_Text }}</p>
+              <ul class="list-unstyled">
+                <li class="d-flex align-items-start gap-3 mb-3">
+                  <img [src]="'../../../../../../assets/Images/' + About.Aboutuspage.point_Img_1" alt="Image 1" style="width: 50px; height: auto;">
+                  <div>
+                    <p>Each trip is carefully crafted to leave you free to live in the moment and enjoy your vacation.</p>
+                  </div>
+                </li>
+                <li class="d-flex align-items-start gap-3 mb-3">
+                  <img [src]="'../../../../../../assets/Images/' + About.Aboutuspage.point_Img_2" alt="Image 2" style="width: 50px; height: auto;">
+                  <div>
+                    <p>Each trip is carefully crafted to leave you free to live in the moment and enjoy your vacation.</p>
+                  </div>
+                </li>
+                <li class="d-flex align-items-start gap-3">
+                  <img [src]="'../../../../../../assets/Images/' + About.Aboutuspage.point_Img_3" alt="Image 3" style="width: 50px; height: auto;">
+                  <div>
+                    <p>Each trip is carefully crafted to leave you free to live in the moment and enjoy your vacation.</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      
+      <ng-template #callUpdateDialog>
+        <h5 mat-dialog-title class="dialog-title">Update About Section</h5>
+        <mat-dialog-content class="dialog-content">
+          <form [formGroup]="updateAboutP">
+      
+            
+            <div class="mb-3">
+              <label class="form-label">About Title</label>
+              <input type="text" class="form-control" formControlName="about_Title" [(ngModel)]="pData.about_Title"
+                name="about_Title" required>
+            </div>
+      
+           
+            <div class="mb-3">
+              <label class="form-label">About Text</label>
+              <textarea class="form-control" formControlName="about_Text" [(ngModel)]="pData.about_Text"
+                name="about_Text" required></textarea>
+            </div>
+      
+          
+            <div class="mb-3">
+              <label class="form-label">Icon 1 </label>
+              <input type="file" class="form-control" (change)="onFileChange($event, 'point_Img_1')" />
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Icon 2 </label>
+              <input type="file" class="form-control" (change)="onFileChange($event, 'point_Img_2')" />
+            </div>
+      
+            <div class="mb-3">
+              <label class="form-label">Icon 3 </label>
+              <input type="file" class="form-control" (change)="onFileChange($event, 'point_Img_3')" />
+            </div>
+            <div class="mb-3">
+              <label class="form-label">about</label>
+              <input type="file" class="form-control" (change)="onFileChange($event, 'about_Image')" />
+            </div>
+      
+          
+           
+           
+           
+      
+          </form>
+        </mat-dialog-content>
+      
+        <div class="modal-footer mb-5">
+          <button type="button" class="btn btn-primary m-1" mat-dialog-close (click)="updateAbout()">Update</button>
+          <button type="button" class="btn btn-secondary m-1 me-3" mat-dialog-close>Cancel</button>
+        </div>
+      </ng-template>
+      
+
+    </div>
+
+   
+  </div>
+ 

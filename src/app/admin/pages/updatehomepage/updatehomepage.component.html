@@ -1,0 +1,63 @@
+<h5 mat-dialog-title class="dialog-title">Update Trip Schedule Details</h5>
+<mat-dialog-content class="dialog-content">
+  <form [formGroup]="updateHomepage">
+    <div class="mb-3">
+      <label class="form-label">websitetitle</label>
+      <input type="text" class="form-control" formControlName="websitetitle" required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">toptext</label>
+      <input type="text" class="form-control" formControlName="toptext" required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">titileabouttext</label>
+      <input type="text" class="form-control" formControlName="titileabouttext" required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">abouttext1</label>
+      <input type="text" class="form-control" formControlName="abouttext1" required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">abouttext2</label>
+      <input type="text" class="form-control" formControlName="abouttext2" required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">pointabouttext1</label>
+      <input type="text" class="form-control" formControlName="pointabouttext1" required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">pointabouttext2</label>
+      <input type="text" class="form-control" formControlName="pointabouttext2" required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">desttitle</label>
+      <input type="text" class="form-control" formControlName="desttitle" required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">desttext</label>
+      <input type="text" class="form-control" formControlName="desttext" required>
+    </div>
+    <!-- File inputs for uploading images -->
+    <div class="mb-3">
+      <label>Upload logoimage:</label>
+      <input type="file" #file formControlName="logoimage" (change)="uploadimage(file.files,'logoimage')" />
+    </div>
+
+    <div class="mb-3">
+      <label>Upload Form Image:</label>
+      <input type="file" #file1 formControlName="formimage" (change)="uploadimage(file1.files,'formimage')">
+    </div>
+
+    <div class="mb-3">
+      <label>Upload Train logo:</label>
+      <input type="file" #file2 formControlName="trainlogo" (change)="uploadimage(file2.files,'trainlogo')">
+    </div>
+    <ngx-spinner type="ball-scale-multiple">
+      <p style="color: white">Uploading...</p>
+    </ngx-spinner>
+  </form>
+</mat-dialog-content>
+<div class="modal-footer mb-5">
+  <button type="button" class="btn btn-primary m-1" mat-dialog-close (click)="save()">Update</button>
+  <button type="button" class="btn btn-secondary m-1 me-3" mat-dialog-close>Cancel</button>
+</div>

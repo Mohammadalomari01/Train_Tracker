@@ -1,0 +1,47 @@
+<home-navbar></home-navbar>
+<div class="banner section-space-y mt-16">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="section-space-md-y text-center">
+                    <h1 class="h2 text-light">All Stations</h1>
+                    <ul class="list list-row list-dot list-dot-md justify-content-center">
+                        <li><a routerLink="/" class="link text-light hover:text-primary">Home</a></li>
+                        <li><a class="link text-primary hover:text-primary">Stations</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><!-- /Banner -->
+<div class="section-space-y bg-secondary">
+    <div class="container">
+        <div class="row g-4">
+            <div *ngFor="let station of stationService.stations" class="col-md-6 col-lg-4">
+                <div class="position-relative rounded overflow-hidden"><img
+                        src="../../assets/Images/{{station.imagepath}}" alt="image"
+                        class="img-fluid w-100 h-100 object-fit-cover">
+                    <a (click)="showStationDetails(station)" style="cursor: pointer;"
+                        class="link position-absolute top-0 start-0 w-100 h-100 p-4 p-md-6 bg-dark bg-opacity-40 d-flex flex-column align-items-start justify-content-start">
+                        <span
+                            class="d-inline-flex align-items-center gap-2 rounded-pill bg-dark px-3 py-1 fs-14 mb-2"><span
+                                class="d-inline-block text-light">
+                                <ul class="list list-row gap-1 align-items-center">
+                                    <li *ngFor="let item of [].constructor(station.averageRating);"><span
+                                            class="text-warning fs-14 d-block"><i class="bi bi-star-fill"></i></span>
+                                    </li>
+                                    <li *ngFor="let item of [].constructor(5-(station.averageRating));"><span
+                                            class="text-warning fs-14 d-block"><i class="bi bi-star"></i></span></li>
+                                    <li><span class="text-light fs-12 d-block">{{station.averageRating}}</span></li>
+                                </ul>
+                            </span>
+                        </span>
+                        <span class="d-block h6 text-white fw-medium mb-0 mt-auto">{{station.stationname}}</span><span
+                            class="d-block fs-14 text-white">{{station.address}}</span></a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>
